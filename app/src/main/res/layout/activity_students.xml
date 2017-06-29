@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10sp"
     tools:context="innopolis.studentsapp.activities.StudentsActivity">
 
     <TextView
@@ -14,26 +15,26 @@
         android:text="List of all students" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_weight="1"
-            android:text="Filter by name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Filter by name" />
 
         <EditText
             android:id="@+id/editTextStudentNameFilter"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <fragment
         android:id="@+id/fragmentStudentList"
-        android:name="innopolis.studentsapp.fragments.GroupListFragment"
+        android:name="innopolis.studentsapp.fragments.StudentListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

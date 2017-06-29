@@ -9,6 +9,8 @@
     android:padding="5sp">
 
     <TextView
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:id="@+id/textViewAdminName"
         android:layout_width="match_parent"
