@@ -49,25 +49,35 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
     public static class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private RVGroupAdapter parent;
         private TextView textViewName;
+        private TextView textViewLetter;
 
         public ItemHolder(View itemView, RVGroupAdapter parent) {
             super(itemView);
             itemView.setOnClickListener(this);
             this.parent = parent;
             textViewName = (TextView) itemView.findViewById(R.id.textRV);
+            textViewLetter = (TextView) itemView.findViewById(R.id.textLetter);
         }
 
         public void setTextViewName(CharSequence charSequence){
             textViewName.setText(charSequence);
         }
 
+        public void setTextViewLetter(CharSequence charSequence){
+            textViewLetter.setText(charSequence);
+        }
+
         public CharSequence getTextViewName(){
             return textViewName.getText();
         }
 
+        public CharSequence getTextViewLetter(){
+            return textViewLetter.getText();
+        }
+
         @Override
         public void onClick(View v) {
-
+            
         }
     }
 

@@ -12,25 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import innopolis.studentsapp.R;
-import innopolis.studentsapp.adapters.RVGroupAdapter;
+import innopolis.studentsapp.adapters.RVStudentAdapter;
 
 /**
  * Created by davlet on 6/28/17.
  */
 
-public class GroupListFragment extends Fragment {
+public class StudentListFragment extends Fragment {
     public ArrayAdapter<String> arrayAdapter;
     private EditText editTextGroupNameFilter;
 
     private RecyclerView rvGroups;
     private LinearLayoutManager layoutManager;
-    private RVGroupAdapter rvGroupAdapter;
+    private RVStudentAdapter rvStudentAdapter;
 
     @Nullable
     @Override
@@ -52,9 +51,9 @@ public class GroupListFragment extends Fragment {
         rvGroups = (RecyclerView) getActivity().findViewById(R.id.recylerView);
         layoutManager = new LinearLayoutManager(getActivity().getBaseContext(),
                 LinearLayoutManager.VERTICAL, false);
-        rvGroupAdapter = new RVGroupAdapter(getActivity().getBaseContext(), list);
+        rvStudentAdapter = new RVStudentAdapter(getActivity().getBaseContext(), list);
 
-        rvGroups.setAdapter(rvGroupAdapter);
+        rvGroups.setAdapter(rvStudentAdapter);
         rvGroups.setLayoutManager(layoutManager);
 
         editTextGroupNameFilter = (EditText) getActivity().findViewById(R.id.editTextGroupNameFilter);
@@ -66,7 +65,7 @@ public class GroupListFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                rvGroupAdapter.filter(s);
+                rvStudentAdapter.filter(s);
             }
 
             @Override

@@ -21,8 +21,8 @@ public class RVStudentAdapter extends RecyclerView.Adapter<RVStudentAdapter.Item
     private List<String> items;
     private LayoutInflater layoutInflater;
 
-    public RVStudentAdapter(Context context) {
-        this.items = new ArrayList<>();
+    public RVStudentAdapter(Context context, List<String> list) {
+        this.items = list;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
@@ -70,5 +70,9 @@ public class RVStudentAdapter extends RecyclerView.Adapter<RVStudentAdapter.Item
     public void add(int location, String iName){
         items.add(location, iName);
         notifyItemInserted(location);
+    }
+
+    public void filter(CharSequence text){
+
     }
 }

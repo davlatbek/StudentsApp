@@ -39,6 +39,7 @@
         <activity
             android:name=".activities.StudentPageActivity"
             android:launchMode="singleTop" />
+        <activity android:name=".activities.UserPageActivity"></activity>
     </application>
 
 </manifest>
