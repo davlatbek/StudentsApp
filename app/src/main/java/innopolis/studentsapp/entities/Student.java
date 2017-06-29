@@ -20,6 +20,7 @@ public class Student extends Entity implements Serializable, Parcelable {
     private Long groupID;
     private transient List<Contact> contacts;
     private transient Random random = new Random();
+    private int photoId;
 
     public Student(String name, String surname, String middleName, Date dateOfBirth, Long groupID, List<Contact> contacts) {
         random = new Random();
@@ -40,6 +41,25 @@ public class Student extends Entity implements Serializable, Parcelable {
         this.dateOfBirth = dateOfBirth;
         this.groupID = groupID;
         this.id = System.currentTimeMillis() + random.nextInt();
+    }
+
+    public Student(String name, String surname, String middleName, Date dateOfBirth, Long groupID, int photoId) {
+        random = new Random();
+        this.name = name;
+        this.surname = surname;
+        this.middleName = middleName;
+        this.dateOfBirth = dateOfBirth;
+        this.groupID = groupID;
+        this.id = System.currentTimeMillis() + random.nextInt();
+        this.photoId = photoId;
+    }
+
+    public int getPhotoId() {
+        return photoId;
+    }
+
+    public void setPhotoId(int photoId) {
+        this.photoId = photoId;
     }
 
     public String getName() {

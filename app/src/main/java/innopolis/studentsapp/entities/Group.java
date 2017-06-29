@@ -24,6 +24,12 @@ public class Group extends Entity implements Serializable, Parcelable {
         this.studentList = new ArrayList<>();
     }
 
+    public Group(Long id, String name, Integer courseNumber) {
+        Id = id;
+        this.name = name;
+        this.courseNumber = courseNumber;
+    }
+
     public String getName() {
         return name;
     }
