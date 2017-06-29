@@ -2,11 +2,10 @@ package innopolis.studentsapp.activities;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import innopolis.studentsapp.R;
 
@@ -14,7 +13,6 @@ public class GroupsActivity extends AppCompatActivity {
     private EditText editTextGroupNameFilter;
     private Context context;
     private Fragment fragmentGroupList;
-    private ListView lvGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +20,8 @@ public class GroupsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_groups);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
         context = this;
         editTextGroupNameFilter = (EditText) findViewById(R.id.editTextGroupNameFilter);
         fragmentGroupList = getFragmentManager().findFragmentById(R.id.fragmentList);
-
-//        lvGroups = (ListView) fragmentGroupList.getView().findViewById(R.id.listView);
-//        lvGroups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(context, GroupPageActivity.class);
-//                intent.putExtra("group_name", (String) lvGroups.getAdapter().getItem(position));
-//                startActivity(intent);
-//            }
-//        });
     }
 }

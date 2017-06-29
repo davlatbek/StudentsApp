@@ -38,7 +38,7 @@ public class AdminPageActivity extends AppCompatActivity {
         buttonStudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, StudentPageActivity.class));
+                startActivity(new Intent(context, StudentsActivity.class));
             }
         });
         buttonJournals.setOnClickListener(new View.OnClickListener() {

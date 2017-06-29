@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private Button buttonLogin;
     private Button buttonRegister;
-    private Switch switchIsAdmin;
     private Context context;
     private Users users;
 
@@ -36,13 +35,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         context = this;
         users = Users.getInstance();
+        initViews();
+    }
+
+    private void initViews() {
         editTextLogin = (EditText) findViewById(R.id.editTextLogin);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        switchIsAdmin = (Switch) findViewById(R.id.switchIsAdmin);
-        switchIsAdmin.setChecked(false);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -53,12 +53,13 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, AdminPageActivity.class);
                     intent.putExtra("login", editTextLogin.getText().toString());
                     startActivity(intent);
-//                    if (switchIsAdmin.isChecked()){
+
+//                    if (db.adminlogins.contains(editTextLogin.getText().toString())) {
 //                        Intent intent = new Intent(context, AdminPageActivity.class);
 //                        intent.putExtra("login", editTextLogin.getText().toString());
 //                        startActivity(intent);
 //                    } else {
-                        //add login to students page
+//                        //add login to students page
 //                        Toast.makeText(context, "Nothing to show", Toast.LENGTH_SHORT).show();
 //                    }
                 }
@@ -78,15 +79,5 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-
-    public void populateDataTemp(){
-        List<Group> groupList = new ArrayList<>();
-        groupList.add(new Group(1L, "Group p1", 2, Semester.SPRING));
-        groupList.add(new Group(2L, "Group 2", 3, Semester.FALL));
-        groupList.add(new Group(3L, "Group 3", 4, Semester.SPRING));
-        groupList.add(new Group(4L, "Group 4", 1, Semester.FALL));
-        groupList.add(new Group(5L, "Group 5", 1, Semester.FALL));
-
     }
 }
