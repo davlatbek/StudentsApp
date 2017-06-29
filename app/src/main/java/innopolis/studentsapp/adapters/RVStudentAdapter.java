@@ -9,35 +9,31 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import innopolis.studentsapp.R;
-import innopolis.studentsapp.entities.Group;
 
 /**
  * Created by davlet on 6/29/17.
  */
 
-public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHolder>{
+public class RVStudentAdapter extends RecyclerView.Adapter<RVStudentAdapter.ItemHolder>{
 
     private List<String> items;
-    private List<String> itemsCopy = new ArrayList<>();
     private LayoutInflater layoutInflater;
 
-    public RVGroupAdapter(Context context, List<String> list) {
-        this.items = list;
-        itemsCopy.addAll(items);
+    public RVStudentAdapter(Context context) {
+        this.items = new ArrayList<>();
         this.layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
-    public RVGroupAdapter.ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RVStudentAdapter.ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.rv_item, parent, false);
         return new ItemHolder(view, this);
     }
 
     @Override
-    public void onBindViewHolder(RVGroupAdapter.ItemHolder holder, int position) {
+    public void onBindViewHolder(RVStudentAdapter.ItemHolder holder, int position) {
         holder.setTextViewName(items.get(position));
     }
 
@@ -47,10 +43,10 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
     }
 
     public static class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private RVGroupAdapter parent;
+        private RVStudentAdapter parent;
         private TextView textViewName;
 
-        public ItemHolder(View itemView, RVGroupAdapter parent) {
+        public ItemHolder(View itemView, RVStudentAdapter parent) {
             super(itemView);
             itemView.setOnClickListener(this);
             this.parent = parent;
@@ -74,15 +70,5 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
     public void add(int location, String iName){
         items.add(location, iName);
         notifyItemInserted(location);
-    }
-
-    public void filter(CharSequence text){
-        text = text.toString().toLowerCase();
-        items.clear();
-        for (String s: itemsCopy){
-            if  (s.toLowerCase().contains(text))
-                items.add(s);
-        }
-        notifyDataSetChanged();
     }
 }

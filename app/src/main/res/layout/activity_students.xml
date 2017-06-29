@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/fragmentStudentList"
-        android:name="innopolis.studentsapp.fragments.ListFragment"
+        android:name="innopolis.studentsapp.fragments.GroupListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

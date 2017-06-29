@@ -14,6 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import innopolis.studentsapp.R;
 import innopolis.studentsapp.adapters.RVGroupAdapter;
 
@@ -21,18 +24,19 @@ import innopolis.studentsapp.adapters.RVGroupAdapter;
  * Created by davlet on 6/28/17.
  */
 
-public class ListFragment extends Fragment {
-    private ListView listView;
+public class GroupListFragment extends Fragment {
     public ArrayAdapter<String> arrayAdapter;
     private EditText editTextGroupNameFilter;
 
     private RecyclerView rvGroups;
     private LinearLayoutManager layoutManager;
+    //different adapters for different list of entities, need base adapter
     private RVGroupAdapter rvGroupAdapter;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
@@ -40,18 +44,19 @@ public class ListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        List<String> list = new ArrayList<>();
+        list.add("asdf");
+        list.add("qwer");
+        list.add("zxcv");
+        list.add("davl");
+        list.add("tylasdf");
         rvGroups = (RecyclerView) getActivity().findViewById(R.id.recylerView);
-        layoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
-        rvGroupAdapter = new RVGroupAdapter(getActivity().getBaseContext());
+        layoutManager = new LinearLayoutManager(getActivity().getBaseContext(),
+                LinearLayoutManager.VERTICAL, false);
+        rvGroupAdapter = new RVGroupAdapter(getActivity().getBaseContext(), list);
 
         rvGroups.setAdapter(rvGroupAdapter);
         rvGroups.setLayoutManager(layoutManager);
-        rvGroupAdapter.add(0, "one");
-        rvGroupAdapter.add(1, "two");
-        rvGroupAdapter.add(2, "three");
-        rvGroupAdapter.add(3, "one");
-        rvGroupAdapter.add(4, "two");
-        rvGroupAdapter.add(5, "three");
 
         editTextGroupNameFilter = (EditText) getActivity().findViewById(R.id.editTextGroupNameFilter);
         editTextGroupNameFilter.addTextChangedListener(new TextWatcher() {
@@ -62,7 +67,7 @@ public class ListFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                arrayAdapter.getFilter().filter(s);
+                rvGroupAdapter.filter(s);
             }
 
             @Override
