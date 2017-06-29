@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import innopolis.studentsapp.R;
 import innopolis.studentsapp.entities.Group;
@@ -20,11 +19,12 @@ import innopolis.studentsapp.entities.Group;
 
 public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHolder>{
 
-    private List<String> items;
-    private List<String> itemsCopy = new ArrayList<>();
+    private List<Group> items;
+    private List<Group> itemsCopy = new ArrayList<>();
     private LayoutInflater layoutInflater;
+    private ItemClickListener onItemClickListener;
 
-    public RVGroupAdapter(Context context, List<String> list) {
+    public RVGroupAdapter(Context context, List<Group> list) {
         this.items = list;
         itemsCopy.addAll(items);
         this.layoutInflater = LayoutInflater.from(context);
@@ -32,13 +32,14 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
 
     @Override
     public RVGroupAdapter.ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.rv_item, parent, false);
-        return new ItemHolder(view, this);
+        View view = layoutInflater.inflate(R.layout.rv_group_item, parent, false);
+        return new ItemHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RVGroupAdapter.ItemHolder holder, int position) {
-        holder.setTextViewName(items.get(position));
+        holder.setTextViewGroupName(items.get(position).getName());
+        holder.setTextViewGroupCourse(items.get(position).getCourseNumber().toString());
     }
 
     @Override
@@ -46,53 +47,59 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
         return items.size();
     }
 
-    public static class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private RVGroupAdapter parent;
-        private TextView textViewName;
-        private TextView textViewLetter;
+    public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView textViewGroupName;
+        private TextView textViewGroupCourse;
 
-        public ItemHolder(View itemView, RVGroupAdapter parent) {
+        public ItemHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            this.parent = parent;
-            textViewName = (TextView) itemView.findViewById(R.id.textRV);
-            textViewLetter = (TextView) itemView.findViewById(R.id.textLetter);
+            textViewGroupName = (TextView) itemView.findViewById(R.id.rvTextGroupName);
+            textViewGroupCourse = (TextView) itemView.findViewById(R.id.rvTextCourseNumber);
         }
 
-        public void setTextViewName(CharSequence charSequence){
-            textViewName.setText(charSequence);
+        public void setTextViewGroupName(CharSequence charSequence){
+            textViewGroupName.setText(charSequence);
         }
 
-        public void setTextViewLetter(CharSequence charSequence){
-            textViewLetter.setText(charSequence);
+        public void setTextViewGroupCourse(CharSequence charSequence){
+            textViewGroupCourse.setText(charSequence);
         }
 
-        public CharSequence getTextViewName(){
-            return textViewName.getText();
+        public CharSequence getTextViewGroupName(){
+            return textViewGroupName.getText();
         }
 
-        public CharSequence getTextViewLetter(){
-            return textViewLetter.getText();
+        public CharSequence getTextViewGroupCourse(){
+            return textViewGroupCourse.getText();
         }
 
         @Override
         public void onClick(View v) {
-            
+            if (onItemClickListener != null)
+                onItemClickListener.onItemClick(v, getAdapterPosition());
         }
     }
 
-    public void add(int location, String iName){
-        items.add(location, iName);
-        notifyItemInserted(location);
+    public void setItemClickListener(ItemClickListener itemClickListener){
+        this.onItemClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener{
+        void onItemClick(View view, int position);
     }
 
     public void filter(CharSequence text){
         text = text.toString().toLowerCase();
         items.clear();
-        for (String s: itemsCopy){
-            if  (s.toLowerCase().contains(text))
-                items.add(s);
+        for (Group group: itemsCopy){
+            if  (group.getName().toLowerCase().contains(text))
+                items.add(group);
         }
         notifyDataSetChanged();
+    }
+
+    public Group getGroupAtPosition(int id){
+        return items.get(id);
     }
 }
