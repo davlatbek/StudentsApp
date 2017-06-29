@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="innopolis.studentsapp.activities.AdminPageActivity"
+    android:padding="5sp">
+
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/textViewAdminName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome " />
+
+    <Button
+        android:id="@+id/buttonGroups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Groups" />
+
+    <Button
+        android:id="@+id/buttonStudents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Students" />
+
+    <Button
+        android:id="@+id/buttonJournals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Journals" />
+</LinearLayout>
