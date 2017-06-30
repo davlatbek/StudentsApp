@@ -33,7 +33,7 @@
     </LinearLayout>
 
     <fragment
-        android:id="@+id/fragmentList"
+        android:id="@+id/fragmentGroupList"
         android:name="innopolis.studentsapp.fragments.GroupListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

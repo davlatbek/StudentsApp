@@ -42,7 +42,7 @@
         android:text="List of students" />
 
     <fragment
-        android:id="@+id/fragmentList"
+        android:id="@+id/fragmentGroupList"
         android:name="innopolis.studentsapp.fragments.StudentListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
