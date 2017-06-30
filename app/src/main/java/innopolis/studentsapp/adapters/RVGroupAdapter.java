@@ -12,6 +12,7 @@ import java.util.List;
 
 import innopolis.studentsapp.R;
 import innopolis.studentsapp.entities.Group;
+import innopolis.studentsapp.interfaces.GroupItemClickListener;
 
 /**
  * Created by davlet on 6/29/17.
@@ -22,7 +23,7 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
     private List<Group> items;
     private List<Group> itemsCopy = new ArrayList<>();
     private LayoutInflater layoutInflater;
-    private ItemClickListener onItemClickListener;
+    private GroupItemClickListener onGroupItemClickListener;
 
     public RVGroupAdapter(Context context, List<Group> list) {
         this.items = list;
@@ -76,17 +77,13 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
 
         @Override
         public void onClick(View v) {
-            if (onItemClickListener != null)
-                onItemClickListener.onItemClick(v, getAdapterPosition());
+            if (onGroupItemClickListener != null)
+                onGroupItemClickListener.onItemClick(v, getAdapterPosition());
         }
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener){
-        this.onItemClickListener = itemClickListener;
-    }
-
-    public interface ItemClickListener{
-        void onItemClick(View view, int position);
+    public void setItemClickListener(GroupItemClickListener groupItemClickListener){
+        this.onGroupItemClickListener = groupItemClickListener;
     }
 
     public void filter(CharSequence text){

@@ -13,6 +13,7 @@ import java.util.List;
 
 import innopolis.studentsapp.R;
 import innopolis.studentsapp.entities.Student;
+import innopolis.studentsapp.interfaces.StudentItemClickListener;
 
 /**
  * Created by davlet on 6/29/17.
