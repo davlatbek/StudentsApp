@@ -1,9 +1,11 @@
-package innopolis.studentsapp.fragments;
+package innopolis.studentsapp.interfaces;
+
+import android.view.ContextMenu;
 
 /**
  * Created by davlet on 6/30/17.
  */
 
 public interface FragmentInterface {
-    setContextMenuListener();
+    void setContextMenuListener(ContextMenu contextMenu);
 }

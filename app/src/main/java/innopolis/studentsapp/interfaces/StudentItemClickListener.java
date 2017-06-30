@@ -1,4 +1,4 @@
-package innopolis.studentsapp.adapters;
+package innopolis.studentsapp.interfaces;
 
 import android.view.View;
 
