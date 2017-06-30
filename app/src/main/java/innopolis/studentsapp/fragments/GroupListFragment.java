@@ -20,17 +20,19 @@ import innopolis.studentsapp.R;
 import innopolis.studentsapp.activities.GroupPageActivity;
 import innopolis.studentsapp.adapters.RVGroupAdapter;
 import innopolis.studentsapp.entities.Group;
+import innopolis.studentsapp.interfaces.GroupItemClickListener;
+import innopolis.studentsapp.utilities.TempData;
 
 /**
  * Created by davlet on 6/28/17.
  */
 
-public class GroupListFragment extends Fragment implements RVGroupAdapter.ItemClickListener {
+public class GroupListFragment extends Fragment implements GroupItemClickListener {
     private EditText editTextGroupNameFilter;
     private RecyclerView rvGroups;
     private RVGroupAdapter rvGroupAdapter;
     private LinearLayoutManager layoutManager;
-    private List<Group> tempGroupList;
+    private TempData tempData = TempData.getInstance();
 
     @Nullable
     @Override
@@ -43,9 +45,8 @@ public class GroupListFragment extends Fragment implements RVGroupAdapter.ItemCl
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        populateTempData();
         rvGroups = (RecyclerView) getActivity().findViewById(R.id.recylerView);
-        rvGroupAdapter = new RVGroupAdapter(getActivity().getBaseContext(), tempGroupList);
+        rvGroupAdapter = new RVGroupAdapter(getActivity().getBaseContext(), TempData.getGroups());
         rvGroupAdapter.setItemClickListener(this);
         layoutManager = new LinearLayoutManager(getActivity().getBaseContext(),
                 LinearLayoutManager.VERTICAL, false);
@@ -59,6 +60,7 @@ public class GroupListFragment extends Fragment implements RVGroupAdapter.ItemCl
     @Override
     public void onItemClick(View view, int position) {
         Intent intent = new Intent(getActivity(), GroupPageActivity.class);
+        intent.putExtra("group_id", rvGroupAdapter.getGroupAtPosition(position).getId());
         startActivity(intent);
     }
 
@@ -79,26 +81,5 @@ public class GroupListFragment extends Fragment implements RVGroupAdapter.ItemCl
 
             }
         });
-    }
-
-    private void populateTempData() {
-        tempGroupList = new ArrayList<>();
-        tempGroupList.add(new Group(11L, "Group 1", 2));
-        tempGroupList.add(new Group(22L, "group 2", 5));
-        tempGroupList.add(new Group(23L, "group 2", 5));
-        tempGroupList.add(new Group(24L, "group 2", 5));
-        tempGroupList.add(new Group(25L, "group 2", 5));
-        tempGroupList.add(new Group(26L, "group 2", 5));
-        tempGroupList.add(new Group(27L, "group 2", 5));
-        tempGroupList.add(new Group(28L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
-        tempGroupList.add(new Group(2L, "group 2", 5));
     }
 }

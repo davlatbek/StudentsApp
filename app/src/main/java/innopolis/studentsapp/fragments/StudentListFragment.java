@@ -3,17 +3,14 @@ package innopolis.studentsapp.fragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -23,8 +20,7 @@ import java.util.List;
 import innopolis.studentsapp.R;
 import innopolis.studentsapp.activities.StudentPageActivity;
 import innopolis.studentsapp.adapters.RVStudentAdapter;
-import innopolis.studentsapp.adapters.StudentItemClickListener;
-import innopolis.studentsapp.entities.Group;
+import innopolis.studentsapp.interfaces.StudentItemClickListener;
 import innopolis.studentsapp.entities.Student;
 import innopolis.studentsapp.utilities.TempData;
 
@@ -37,7 +33,6 @@ public class StudentListFragment extends Fragment implements StudentItemClickLis
     private RecyclerView recyclerView;
     private RVStudentAdapter rvStudentAdapter;
     private LinearLayoutManager layoutManager;
-    private List<Student> tempStudentList;
     private TempData tempData = TempData.getInstance();
 
     @Nullable
@@ -50,7 +45,6 @@ public class StudentListFragment extends Fragment implements StudentItemClickLis
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        populateTempData();
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.recylerView);
         rvStudentAdapter = new RVStudentAdapter(getActivity(), TempData.getStudents());
         rvStudentAdapter.setStudentItemClickListener(this);
@@ -81,16 +75,6 @@ public class StudentListFragment extends Fragment implements StudentItemClickLis
 
             }
         });
-    }
-
-    private void populateTempData() {
-        tempStudentList = new ArrayList<>();
-        tempStudentList.add(new Student("lillie111", "clinton" , "kurbonovich", new Date(123456789L), 1L, R.drawable.portraitphoto));
-        tempStudentList.add(new Student("albert", "einstein" , "kurbonovich", new Date(123456789L), 1L, R.drawable.einstein));
-        tempStudentList.add(new Student("lillie", "clinton" , "kurbonovich", new Date(123456789L), 1L, R.drawable.lillie));
-        tempStudentList.add(new Student("albert", "einstein" , "kurbonovich", new Date(123456789L), 1L, R.drawable.einstein));
-        tempStudentList.add(new Student("lillie", "clinton" , "kurbonovich", new Date(123456789L), 1L, R.drawable.lillie));
-        tempStudentList.add(new Student("albert", "einstein" , "kurbonovich", new Date(123456789L), 1L, R.drawable.einstein));
     }
 
     @Override
