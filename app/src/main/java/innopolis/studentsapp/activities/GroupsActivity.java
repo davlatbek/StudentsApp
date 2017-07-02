@@ -22,6 +22,6 @@ public class GroupsActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         context = this;
         editTextGroupNameFilter = (EditText) findViewById(R.id.editTextGroupNameFilter);
-        fragmentGroupList = getFragmentManager().findFragmentById(R.id.fragmentList);
+        fragmentGroupList = getFragmentManager().findFragmentById(R.id.fragmentGroupList);
     }
 }

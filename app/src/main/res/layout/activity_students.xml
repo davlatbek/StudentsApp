@@ -26,6 +26,7 @@
             android:text="Filter by name" />
 
         <EditText
+            android:paddingBottom="10sp"
             android:id="@+id/editTextStudentNameFilter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

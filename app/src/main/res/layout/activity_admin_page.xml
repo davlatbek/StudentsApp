@@ -18,20 +18,30 @@
         android:text="Welcome " />
 
     <Button
+        android:textSize="16sp"
         android:id="@+id/buttonGroups"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Groups" />
 
     <Button
+        android:textSize="16sp"
         android:id="@+id/buttonStudents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Students" />
 
     <Button
+        android:textSize="16sp"
         android:id="@+id/buttonJournals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Journals" />
+
+    <Button
+        android:textSize="16sp"
+        android:id="@+id/buttonLessons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_lessons"/>
 </LinearLayout>

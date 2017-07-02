@@ -2,13 +2,17 @@ package innopolis.studentsapp.fragments;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -55,6 +59,30 @@ public class GroupListFragment extends Fragment implements GroupItemClickListene
 
         editTextGroupNameFilter = (EditText) getActivity().findViewById(R.id.editTextGroupNameFilter);
         setListeners();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater menuInflater = getActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.menu_group_context, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemGroupSMS:
+                sendSmsToGroupCurator();
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    private void sendSmsToGroupCurator(String number) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("smsto:" + number));
+        intent.resolveActivity(getActivity().getPackageManager());
+        startActivity(intent);
     }
 
     @Override
