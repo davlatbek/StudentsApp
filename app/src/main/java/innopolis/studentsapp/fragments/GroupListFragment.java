@@ -37,6 +37,7 @@ public class GroupListFragment extends Fragment implements GroupItemClickListene
     private RVGroupAdapter rvGroupAdapter;
     private LinearLayoutManager layoutManager;
     private TempData tempData = TempData.getInstance();
+    public String phoneToSendSms;
 
     @Nullable
     @Override
@@ -50,7 +51,7 @@ public class GroupListFragment extends Fragment implements GroupItemClickListene
         super.onActivityCreated(savedInstanceState);
 
         rvGroups = (RecyclerView) getActivity().findViewById(R.id.recylerView);
-        rvGroupAdapter = new RVGroupAdapter(getActivity().getBaseContext(), TempData.getGroups());
+        rvGroupAdapter = new RVGroupAdapter(getActivity().getBaseContext(), TempData.getGroups(), this);
         rvGroupAdapter.setItemClickListener(this);
         layoutManager = new LinearLayoutManager(getActivity().getBaseContext(),
                 LinearLayoutManager.VERTICAL, false);
@@ -78,9 +79,9 @@ public class GroupListFragment extends Fragment implements GroupItemClickListene
         return super.onContextItemSelected(item);
     }
 
-    private void sendSmsToGroupCurator(String number) {
+    private void sendSmsToGroupCurator() {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("smsto:" + number));
+        intent.setData(Uri.parse("smsto:" + "+79274792024"));
         intent.resolveActivity(getActivity().getPackageManager());
         startActivity(intent);
     }

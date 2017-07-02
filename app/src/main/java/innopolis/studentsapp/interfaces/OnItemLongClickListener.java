@@ -7,5 +7,5 @@ import android.view.View;
  */
 
 public interface OnItemLongClickListener {
-    boolean onItemLongClicked(View v, int position);
+    boolean onItemLongClick(View v, int position);
 }

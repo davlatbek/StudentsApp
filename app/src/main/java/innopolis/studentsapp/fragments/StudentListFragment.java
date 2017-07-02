@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -16,10 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.sql.SQLOutput;
 
 import innopolis.studentsapp.R;
 import innopolis.studentsapp.activities.StudentPageActivity;
 import innopolis.studentsapp.adapters.RVStudentAdapter;
+import innopolis.studentsapp.entities.Student;
 import innopolis.studentsapp.interfaces.OnItemLongClickListener;
 import innopolis.studentsapp.interfaces.StudentItemClickListener;
 import innopolis.studentsapp.utilities.TempData;
@@ -28,13 +33,13 @@ import innopolis.studentsapp.utilities.TempData;
  * Created by davlet on 6/28/17.
  */
 
-public class StudentListFragment extends Fragment implements StudentItemClickListener, OnItemLongClickListener {
+public class StudentListFragment extends Fragment implements StudentItemClickListener {
     private EditText editTextStudentNameFilter;
     private RecyclerView recyclerView;
     private RVStudentAdapter rvStudentAdapter;
     private LinearLayoutManager layoutManager;
     private TempData tempData = TempData.getInstance();
-    private String phoneNumber;
+    public String phoneNumber = "";
 
     @Nullable
     @Override
@@ -59,7 +64,6 @@ public class StudentListFragment extends Fragment implements StudentItemClickLis
         }
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.recylerView);
         rvStudentAdapter.setStudentItemClickListener(this);
-        rvStudentAdapter.setOnItemLongClickListener(this);
         layoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setAdapter(rvStudentAdapter);
         recyclerView.setLayoutManager(layoutManager);
@@ -113,11 +117,5 @@ public class StudentListFragment extends Fragment implements StudentItemClickLis
         intent.setData(Uri.parse("tel:" + this.phoneNumber));
         intent.resolveActivity(getActivity().getPackageManager());
         startActivity(intent);
-    }
-
-    @Override
-    public boolean onItemLongClicked(View view, int position) {
-        this.phoneNumber = rvStudentAdapter.getStudentByPosition(position).getContacts().get(0).getValue();
-        return true;
     }
 }
