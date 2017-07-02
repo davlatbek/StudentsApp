@@ -16,9 +16,11 @@ public class Group extends Entity implements Serializable, Parcelable {
     private Integer courseNumber;
     private List<Student> studentList;
     private transient Semester semester;
+    private String curatorNumber;
 
     public Group(Long Id, String name, Integer courseNumber, Semester semester) {
         this.Id = Id;
+        this.name = name;
         this.courseNumber = courseNumber;
         this.semester = semester;
         this.studentList = new ArrayList<>();
@@ -103,4 +105,12 @@ public class Group extends Entity implements Serializable, Parcelable {
             return new Group[size];
         }
     };
+
+    public String getCuratorNumber() {
+        return curatorNumber;
+    }
+
+    public void setCuratorNumber(String curatorNumber) {
+        this.curatorNumber = curatorNumber;
+    }
 }

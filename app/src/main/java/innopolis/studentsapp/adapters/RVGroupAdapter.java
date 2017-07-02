@@ -38,6 +38,7 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
         itemsCopy.addAll(items);
         this.layoutInflater = LayoutInflater.from(context);
         this.fragment = (GroupListFragment) fragment;
+        this.fragment.phoneToSendSms = items.get(0).getCuratorNumber();
     }
 
     @Override

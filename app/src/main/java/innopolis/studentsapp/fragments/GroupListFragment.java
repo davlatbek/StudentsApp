@@ -82,6 +82,7 @@ public class GroupListFragment extends Fragment implements GroupItemClickListene
     private void sendSmsToGroupCurator() {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("smsto:" + "+79274792024"));
+        intent.putExtra("sms_body", "Group was created");
         intent.resolveActivity(getActivity().getPackageManager());
         startActivity(intent);
     }
