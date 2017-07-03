@@ -17,6 +17,7 @@ import java.util.List;
 import innopolis.studentsapp.R;
 import innopolis.studentsapp.entities.Group;
 import innopolis.studentsapp.entities.Semester;
+import innopolis.studentsapp.utilities.TempData;
 import innopolis.studentsapp.utilities.Users;
 
 /**
@@ -50,18 +51,20 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (validateLoginPassword(editTextLogin.getText().toString(),
                         editTextPassword.getText().toString())){
-                    Intent intent = new Intent(context, AdminPageActivity.class);
-                    intent.putExtra("login", editTextLogin.getText().toString());
-                    startActivity(intent);
+//                    Intent intent = new Intent(context, AdminPageActivity.class);
+//                    intent.putExtra("login", editTextLogin.getText().toString());
+//                    startActivity(intent);
 
-//                    if (db.adminlogins.contains(editTextLogin.getText().toString())) {
-//                        Intent intent = new Intent(context, AdminPageActivity.class);
-//                        intent.putExtra("login", editTextLogin.getText().toString());
-//                        startActivity(intent);
-//                    } else {
-//                        //add login to students page
-//                        Toast.makeText(context, "Nothing to show", Toast.LENGTH_SHORT).show();
-//                    }
+                    if (editTextLogin.getText().toString().contains("admin")) {
+                        Intent intent = new Intent(context, AdminPageActivity.class);
+                        intent.putExtra("login", editTextLogin.getText().toString());
+                        startActivity(intent);
+                    } else {
+                        //implement login to user_id map
+                        Intent intent = new Intent(context, StudentPageActivity.class);
+                        intent.putExtra("student_id", TempData.getStudents().get(0).getId());
+                        startActivity(intent);
+                    }
                 }
                 else Toast.makeText(context, "Wrong login or password " + users.user + " " + users.password, Toast.LENGTH_SHORT).show();
             }
