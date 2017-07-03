@@ -59,9 +59,9 @@ public class TempData {
             student.setContacts(tempList);
         }
 
-        Group group1 = new Group(1L, "group 1", 10);
-        Group group2 = new Group(2L, "group 2", 20);
-        Group group3 = new Group(3L, "group 3", 30);
+        Group group1 = new Group(1L, "Java course group", 5);
+        Group group2 = new Group(2L, "Android development group", 2);
+        Group group3 = new Group(3L, "Web development group", 3);
         group1.setStudentList(students);
 
         students2 = new ArrayList<>();
