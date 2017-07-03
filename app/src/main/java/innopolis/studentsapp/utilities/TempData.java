@@ -38,11 +38,11 @@ public class TempData {
         journals = new ArrayList<>();
         lessons = new ArrayList<>();
 
-        students.add(new Student("Lillie!!!", "clinton", "perelman", new Date(123456789L), 1L, R.drawable.portraitphoto, null));
+        students.add(new Student("lillie", "clinton", "perelman", new Date(123456789L), 1L, R.drawable.portraitphoto, null));
         students.add(new Student("albert", "einstein", "stein", new Date(123456789L), 1L, R.drawable.einstein, null));
-        students.add(new Student("lillie", "clinton", "vein", new Date(123456789L), 1L, R.drawable.lillie, null));
-        students.add(new Student("albert", "einstein", "kurzvei", new Date(123456789L), 1L, R.drawable.einstein, null));
-        students.add(new Student("lillie", "clinton", "borowitz", new Date(123456789L), 1L, R.drawable.lillie, null));
+        students.add(new Student("lionel", "messi", "vein", new Date(123456789L), 1L, R.drawable.lillie, null));
+        students.add(new Student("cristiano", "ronaldo", "kurzvei", new Date(123456789L), 1L, R.drawable.einstein, null));
+        students.add(new Student("andy", "rubin", "rubin", new Date(123456789L), 1L, R.drawable.lillie, null));
 
         Contact tempContact;
 

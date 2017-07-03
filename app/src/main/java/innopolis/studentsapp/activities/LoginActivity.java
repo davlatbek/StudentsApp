@@ -51,16 +51,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (validateLoginPassword(editTextLogin.getText().toString(),
                         editTextPassword.getText().toString())){
-//                    Intent intent = new Intent(context, AdminPageActivity.class);
-//                    intent.putExtra("login", editTextLogin.getText().toString());
-//                    startActivity(intent);
-
                     if (editTextLogin.getText().toString().contains("admin")) {
                         Intent intent = new Intent(context, AdminPageActivity.class);
                         intent.putExtra("login", editTextLogin.getText().toString());
                         startActivity(intent);
                     } else {
-                        //implement login to user_id map
+                        //TODO implement login to user_id map
                         Intent intent = new Intent(context, StudentPageActivity.class);
                         intent.putExtra("student_id", TempData.getStudents().get(0).getId());
                         startActivity(intent);
@@ -78,9 +74,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validateLoginPassword(String login, String password) {
-        if (users.user.equals(login) && users.password.equals(password)){
-            return true;
-        }
-        return false;
+        return Users.userPasswordMap.containsKey(login)
+                && password.equals(Users.userPasswordMap.get(login));
     }
 }

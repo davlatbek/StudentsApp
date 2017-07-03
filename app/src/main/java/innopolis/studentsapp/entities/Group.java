@@ -71,6 +71,7 @@ public class Group extends Entity implements Serializable, Parcelable {
 
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
+        this.curatorNumber = this.studentList.get(0).getContacts().get(0).getValue();
     }
 
     @Override

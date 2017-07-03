@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,6 @@ public class GroupListFragment extends Fragment implements GroupItemClickListene
     private RecyclerView rvGroups;
     private RVGroupAdapter rvGroupAdapter;
     private LinearLayoutManager layoutManager;
-    private TempData tempData = TempData.getInstance();
     public String phoneToSendSms;
 
     @Nullable
@@ -80,11 +80,17 @@ public class GroupListFragment extends Fragment implements GroupItemClickListene
     }
 
     private void sendSmsToGroupCurator() {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("smsto:" + "+79274792024"));
-        intent.putExtra("sms_body", "Group was created");
-        intent.resolveActivity(getActivity().getPackageManager());
-        startActivity(intent);
+        if (this.phoneToSendSms == null)
+            Toast.makeText(getActivity(),
+                    "Curator number doesn't exist. First set it!",
+                    Toast.LENGTH_SHORT).show();
+        else {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("smsto:" + this.phoneToSendSms));
+            intent.putExtra("sms_body", "Group was created");
+            intent.resolveActivity(getActivity().getPackageManager());
+            startActivity(intent);
+        }
     }
 
     @Override

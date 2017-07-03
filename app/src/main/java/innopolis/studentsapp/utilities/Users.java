@@ -15,9 +15,10 @@ public class Users {
 
     private Users(){
         userPasswordMap = new HashMap<>();
+        userPasswordMap.put("", "");
         userPasswordMap.put("albert", "einstein");
         userPasswordMap.put("lillie", "clinton");
-        userPasswordMap.put("admin", "admin");
+        userPasswordMap.put("admin", "");
     }
 
     public static Users getInstance(){

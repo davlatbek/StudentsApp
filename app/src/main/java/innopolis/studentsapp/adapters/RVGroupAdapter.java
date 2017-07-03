@@ -98,11 +98,7 @@ public class RVGroupAdapter extends RecyclerView.Adapter<RVGroupAdapter.ItemHold
         private View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_SENDTO);
-//                intent.setData(Uri.parse("smsto:" + "+79274792024"));
-//                intent.resolveActivity(fragment.getActivity().getPackageManager());
-//                fragment.getActivity().startActivity(intent);
-//                fragment.phoneNumber = getGroupAtPosition(getAdapterPosition()).getCuratorNumber();
+                fragment.phoneToSendSms = getGroupAtPosition(getAdapterPosition()).getCuratorNumber();
                 return false;
             }
         };
