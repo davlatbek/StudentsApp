@@ -93,6 +93,22 @@ public class TempData {
 
         allStudents.addAll(students);
         allStudents.addAll(students2);
+
+        lessons.add(new Lesson("Software Architecture",
+                new Date(2017, 7, 30),
+                new Date(2017, 7, 30, 12, 0),
+                new Date(2017, 7, 30, 2, 0),
+                "Subject 1", "Description 1", "Artem Pervushov"));
+        lessons.add(new Lesson("SQLite",
+                new Date(2017, 7, 31),
+                new Date(2017, 7, 31, 4, 0),
+                new Date(2017, 7, 31, 6, 0),
+                "Subject 2", "Description 2", "Artem Pervushov"));
+        lessons.add(new Lesson("Activity Context",
+                new Date(2017, 8, 1),
+                new Date(2017, 8, 1, 9, 0),
+                new Date(2017, 8, 1, 11, 0),
+                "Subject 3", "Description 3", "Artem Pervushov"));
     }
 
     private TempData() {
