@@ -94,17 +94,17 @@ public class TempData {
         allStudents.addAll(students);
         allStudents.addAll(students2);
 
-        lessons.add(new Lesson("Software Architecture",
+        lessons.add(new Lesson(1L, "Software Architecture",
                 new Date(2017, 7, 30),
                 new Date(2017, 7, 30, 12, 0),
                 new Date(2017, 7, 30, 2, 0),
                 "Subject 1", "Description 1", "Artem Pervushov"));
-        lessons.add(new Lesson("SQLite",
+        lessons.add(new Lesson(2L, "SQLite",
                 new Date(2017, 7, 31),
                 new Date(2017, 7, 31, 4, 0),
                 new Date(2017, 7, 31, 6, 0),
                 "Subject 2", "Description 2", "Artem Pervushov"));
-        lessons.add(new Lesson("Activity Context",
+        lessons.add(new Lesson(3L, "Activity Context",
                 new Date(2017, 8, 1),
                 new Date(2017, 8, 1, 9, 0),
                 new Date(2017, 8, 1, 11, 0),
@@ -155,5 +155,13 @@ public class TempData {
 
     public List<Student> getStudentsForGroupById(Long id){
         return this.getGroupById(id).getStudentList();
+    }
+
+    public static Lesson getLessonById(Long lesson_id) {
+        for (Lesson lesson: lessons){
+            if (lesson.getId().equals(lesson_id))
+                return lesson;
+        }
+        return null;
     }
 }

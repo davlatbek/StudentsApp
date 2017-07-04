@@ -50,7 +50,7 @@
         <activity
             android:name=".activities.UserPageActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".activities.LessonsActivity"></activity>
+        <activity android:name=".activities.LessonPageActivity"></activity>
     </application>
 
 </manifest>

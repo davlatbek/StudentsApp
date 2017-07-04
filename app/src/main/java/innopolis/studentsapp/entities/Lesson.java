@@ -16,7 +16,8 @@ public class Lesson extends Entity implements Serializable {
     private String description;
     private String lector;
 
-    public Lesson(String name, Date date, Date startTime, Date endTime, String subject, String description, String lector) {
+    public Lesson(Long id, String name, Date date, Date startTime, Date endTime, String subject, String description, String lector) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.startTime = startTime;

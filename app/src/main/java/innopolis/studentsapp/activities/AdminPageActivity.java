@@ -14,6 +14,7 @@ public class AdminPageActivity extends AppCompatActivity {
     private Button buttonGroups;
     private Button buttonStudents;
     private Button buttonJournals;
+    private Button buttonLessons;
     private TextView textViewAdminName;
     private Context context;
 
@@ -29,6 +30,7 @@ public class AdminPageActivity extends AppCompatActivity {
         buttonGroups = (Button) findViewById(R.id.buttonGroups);
         buttonStudents = (Button) findViewById(R.id.buttonStudents);
         buttonJournals = (Button) findViewById(R.id.buttonJournals);
+        buttonLessons = (Button) findViewById(R.id.buttonLessons);
         buttonGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +47,13 @@ public class AdminPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context, JournalActivity.class));
+            }
+        });
+        buttonLessons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(context, LessonsActivity.class));
+                startActivity(new Intent(context, LessonPageActivity.class));
             }
         });
     }
