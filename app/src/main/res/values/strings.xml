@@ -10,4 +10,13 @@
     <string name="summary_password">Save password in app</string>
     <string name="hello">User hello</string>
     <string name="save_hello">Save hello in app</string>
+    <string name="lang_title">Language</string>
+    <string name="app_name_main_screen">STUDENTS</string>
+    <string-array name="languages">
+        <item>Russian</item>
+        <item>English</item>
+        <item>Deutch</item>
+        <item>French</item>
+    </string-array>
+    <string-array name="lang_values">ru, eng, de, fr</string-array>
 </resources>

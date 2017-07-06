@@ -18,4 +18,11 @@
         android:summary="@string/save_hello">
 
     </EditTextPreference>
+    <ListPreference
+        android:key="language_preference"
+        android:title="@string/lang_title"
+        android:entries="@array/languages"
+        android:entryValues="@array/lang_values">
+
+    </ListPreference>
 </PreferenceScreen>
