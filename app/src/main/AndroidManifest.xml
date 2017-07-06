@@ -51,6 +51,7 @@
             android:name=".activities.UserPageActivity"
             android:launchMode="singleTop" />
         <activity android:name=".activities.LessonPageActivity"></activity>
+        <activity android:name=".activities.SettingsActivity"></activity>
     </application>
 
 </manifest>

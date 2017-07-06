@@ -3,4 +3,11 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_lessons">Lessons</string>
+
+    <string name="login_title">Login</string>
+    <string name="summary_login">Save login in app</string>
+    <string name="password_title">Password</string>
+    <string name="summary_password">Save password in app</string>
+    <string name="hello">User hello</string>
+    <string name="save_hello">Save hello in app</string>
 </resources>

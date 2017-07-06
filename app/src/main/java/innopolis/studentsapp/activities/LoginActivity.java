@@ -2,7 +2,9 @@ package innopolis.studentsapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -46,11 +48,25 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (sharedPreferences.getBoolean("save_login", false)){
+            editTextLogin.setText(sharedPreferences.getString("user_login", ""));
+        }
+        if (sharedPreferences.getBoolean("save_password", false)){
+            editTextPassword.setText(sharedPreferences.getString("user_password", ""));
+        }
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (validateLoginPassword(editTextLogin.getText().toString(),
                         editTextPassword.getText().toString())){
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    if (sharedPreferences.getBoolean("save_login", false)){
+                        sharedPreferences.edit().putString("user_login",
+                                editTextLogin.getText().toString()).apply();
+                        sharedPreferences.edit().putString("user_password",
+                                editTextPassword.getText().toString()).apply();
+                    }
                     if (editTextLogin.getText().toString().contains("admin")) {
                         Intent intent = new Intent(context, AdminPageActivity.class);
                         intent.putExtra("login", editTextLogin.getText().toString());

@@ -18,7 +18,7 @@ public class Users {
         userPasswordMap.put("", "");
         userPasswordMap.put("albert", "einstein");
         userPasswordMap.put("lillie", "clinton");
-        userPasswordMap.put("admin", "");
+        userPasswordMap.put("admin", "admin");
     }
 
     public static Users getInstance(){
